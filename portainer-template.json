@@ -1,0 +1,50 @@
+{
+  "version": "3",
+  "templates": [
+    {
+      "type": 3,
+      "title": "Postgres + pgvector",
+      "name": "postgres-pgvector",
+      "description": "PostgreSQL 16 com extensão pgvector para embeddings e RAG. Inclui pg_trgm e btree_gin.",
+      "note": "Altere a senha padrão antes do deploy. Extensões são criadas automaticamente no primeiro boot.",
+      "categories": ["database", "ai", "vector"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/docker-library/docs/master/postgres/logo.png",
+      "repository": {
+        "url": "https://github.com/pizanao/portainer-templates",
+        "stackfile": "stacks/postgres-pgvector/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "POSTGRES_USER",
+          "label": "Usuário do banco",
+          "default": "pizani"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Senha do banco",
+          "default": "changeme"
+        },
+        {
+          "name": "POSTGRES_DB",
+          "label": "Nome do database inicial",
+          "default": "vectordb"
+        },
+        {
+          "name": "POSTGRES_PORT",
+          "label": "Porta externa (use 127.0.0.1 via reverse proxy se exposto)",
+          "default": "5432"
+        },
+        {
+          "name": "PG_VERSION",
+          "label": "Versão do Postgres (pg16 ou pg17)",
+          "default": "pg16",
+          "select": [
+            { "text": "Postgres 16 + pgvector", "value": "pg16", "default": true },
+            { "text": "Postgres 17 + pgvector", "value": "pg17" }
+          ]
+        }
+      ]
+    }
+  ]
+}
