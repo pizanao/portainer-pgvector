@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: docker pull pgvector/pgvector:pg17-trixie
+    image: pgvector/pgvector:pg17-trixie
     container_name: pgvector17
     restart: unless-stopped
     environment:
